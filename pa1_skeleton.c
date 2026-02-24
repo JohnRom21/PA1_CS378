@@ -145,9 +145,7 @@ void *client_thread_func(void *arg) {
     data->total_messages = 0;
     data->request_rate = 0.0f;
 
-    /* TODO: 
-     * It sends messages to the server, waits for a response using epoll,
-     * and measures the round-trip time (RTT) of this request-response.
+    /* TODO: 1 filled
      */
     for (int i = 0; i < num_requests; i++) {
         gettimeofday(&start, NULL);
@@ -202,9 +200,7 @@ void *client_thread_func(void *arg) {
         data->total_messages += 1;
     }
 
-    /* TODO: 
-     * The function exits after sending and receiving a predefined number of messages (num_requests).
-     * It calculates the request rate based on total messages and RTT
+    /* TODO: 2 filled
      */
 done:
     /* Request rate based on accumulated RTT */
@@ -242,9 +238,7 @@ void run_client() {
         exit(1);
     }
 
-    /* TODO:
-     * Create sockets and epoll instances for client threads
-     * and connect these sockets of client threads to the server
+    /* TODO: 3 filled
      */
 
     // Hint: use thread_data to save the created socket and epoll instance for each thread
@@ -290,8 +284,7 @@ void run_client() {
         }
     }
 
-    /* TODO:
-     * Wait for client threads to complete and aggregate metrics of all client threads
+    /* TODO: 4 filled
      */
     long long total_rtt = 0;
     long total_messages = 0;
@@ -358,9 +351,7 @@ static int modify_events(int epfd, conn_item_t *c, uint32_t new_events) {
 }
 
 void run_server() {
-    /* TODO:
-     * Server creates listening socket and epoll instance.
-     * Server registers the listening socket to epoll
+    /* TODO: 5 filled
      */
     int listen_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (listen_fd == -1) {
@@ -439,9 +430,7 @@ void run_server() {
 
     /* Server's run-to-completion event loop */
     while (1) {
-        /* TODO:
-         * Server uses epoll to handle connection establishment with clients
-         * or receive the message from clients and echo the message back
+        /* TODO: 6 filled
          */
         int nfds = epoll_wait(epfd, events, MAX_EVENTS, -1);
         if (nfds == -1) {
@@ -655,3 +644,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
